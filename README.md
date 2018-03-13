@@ -5,6 +5,7 @@ Let's imitate and learn shell script basics.
 reference: https://linuxconfig.org/bash-scripting-tutorial
 
 ### Structures
+```
 .
 ├── 01_hello_world.sh
 ├── 02_compression.sh
@@ -20,6 +21,7 @@ reference: https://linuxconfig.org/bash-scripting-tutorial
 ├── 12_nested_if.sh
 ├── README.md
 ├── sample.txt
+```
 
 ### Shebang
 ```
