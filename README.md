@@ -2,4 +2,4 @@
 
 Let's imitate and learn shell script basics.
 
-referece: https://linuxconfig.org/bash-scripting-tutorial
+reference: https://linuxconfig.org/bash-scripting-tutorial
