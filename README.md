@@ -169,6 +169,7 @@ fi
 |-n __str__| __str__은 공백이 아니다|
 |-z __str__| __str__은 공백이다|
 ```
+# 13_comparison.sh, 14_string_comparison.sh
 # arithmetic comparisons
 if [ 1 -eq 1 ]; then
 	echo "두 수가 같다."
@@ -183,4 +184,95 @@ else
 	fi
 fi
 ```
+
+### File Testing
+https://www.tldp.org/LDP/abs/html/fto.html
+DIR_ROUTE='/usr/'
+FILE_ROUTE='./sample.txt'
+```
+# 15_file_testing.sh
+if [ -d $DIR_ROUTE ]; then
+	echo '폴더 존재'
+fi
+
+if [ -f $FILE_ROUTE ]; then
+	echo '파일 존재'
+fi
+```
+
+### for-loop
+```
+# 16_for_loop.sh
+for _var_ in __sequence__; do
+	...
+done
+
+for ((i=0; __condition__; i++)); do
+	...
+done
+```
+Example
+```
+for idx in `seq 5`; do
+	echo $idx
+done
+```
+
+### while-until loop
+
+while은 condition이 true 인 동안 loop를 실행합니다.(while condition is **True**)
+
+반면, until은 condition이 true가 될 때까지 loop를 실행합니다.(until condition is **True**)
+```
+# 17_while_until_loop.sh
+while [ __condition__ ]; do
+	...
+done
+
+until [ __condition__ ]; do
+	...
+done
+```
+
+### control loop
+
+
+shell script내에 pipeline을 넣을 수 있다. 
+
+이 테크닉으로 STDIN/OUT을 제어할 수 있다.
+
+Example
+```
+# 18.control_loop.sh
+DIR='.'
+# pipeline
+find $DIR -type f | while read file; do
+	if [[ "$file" = *[[:space:]]* ]]; then 
+		mv "$file" `echo $file | tr ' ' '_'`
+	fi
+done
+```
+
+pipeline으로 find command 결과를 STDOUT으로 보내면서 read command에 
+
+STDIN으로 받게된다. POSIX class로 표기된 표현식에서 DIR변수 경로의 파일을 
+찾고 그 파일명에 공백이 있다면 공백을 underscore로 변경하는 예제
+
+
+### Select command
+```
+# 20_select.sh 
+PS3='Choose one word >>'
+
+select word in "A" "B" "C" "D"
+    do
+
+	echo "고른 단어는 $word"
+
+    break    # break하지않으면 무한루프
+done
+
+exit 0
+```
+
 
